@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include<bits/stdc++.h>
 
 // Structure to represent a diplomat
 struct Diplomat {
@@ -48,8 +49,9 @@ std::vector<std::string> generateSeatingArrangement(const std::vector<Diplomat>&
             seatingArrangement.push_back(diplomat.name);
         } else {
             bool isValidNeighbor = false;
-            for (const std::string& neighbor : seatingArrangement) {
-                const Diplomat& neighborDiplomat = tempDiplomats[neighbor];
+            for (size_t i = 0; i < seatingArrangement.size(); ++i) {
+                const std::string& neighbor = seatingArrangement[i];
+                const Diplomat& neighborDiplomat = tempDiplomats[i];
                 if (isValidSeating(diplomat, neighborDiplomat)) {
                     isValidNeighbor = true;
                     break;
@@ -63,8 +65,8 @@ std::vector<std::string> generateSeatingArrangement(const std::vector<Diplomat>&
         }
     }
 
-    return seatingArrangement;
-}
+        return seatingArrangement;
+    }
 
 int main() {
     // Read input and create diplomats
